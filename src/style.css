@@ -5,9 +5,9 @@ body {
   font-family: "DM Sans", sans-serif;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  overflow: auto;
   margin: 0;
-  padding: 0;
+  padding-bottom: 200px;
 }
 
 a {
@@ -194,6 +194,43 @@ main {
   margin-left: 10px;
   position: relative;
   z-index: 1;
+}
+
+.weather-forecast-summary {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.forecast-summary-day {
+  color: #120c28;
+  font-size: 15px;
+  font-weight: 400;
+  padding-bottom: 15px;
+}
+
+.forecast-summary-image-icon {
+  padding: 10px;
+}
+
+.forecast-summary-temperature {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.forecast-temperature-maximum {
+  color: #4d31a0;
+  font-size: 15px;
+  font-weight: 700;
+
+  margin-right: 10px;
+}
+
+.forecast-temperature-minimum {
+  color: #886ed3;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 footer {
