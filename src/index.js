@@ -1,60 +1,53 @@
 function updateIcon(response) {
   const iconElement = document.querySelector("#weather-app-icon-image");
-  const description = response.data.condition.description.toLowerCase();
+  const iconUrl = response.data.condition.icon_url;
 
-  switch (description) {
-    case "clear sky":
-      iconElement.src = "assets/ClearSkyDay.png";
-      iconElement.alt = "Clear Sky";
-      break;
-    case "few clouds":
-      iconElement.src = "assets/FewCloudsDay.png";
-      iconElement.alt = "Few Clouds";
-      break;
-    case "scattered clouds":
-      iconElement.src = "assets/ScatteredCloudsDay.png";
-      iconElement.alt = "Scattered Clouds";
-      break;
-    case "overcast clouds":
-      iconElement.src = "assets/ScatteredCloudsDay.png";
-      iconElement.alt = "Overcast Clouds";
-      break;
-    case "broken clouds":
-      iconElement.src = "assets/BrokenCloudsDay.png";
-      iconElement.alt = "Broken Clouds";
-      break;
-    case "shower rain":
-      iconElement.src = "assets/ShowerRainDay.png";
-      iconElement.alt = "Shower Rain";
-      break;
-    case "rain":
-      iconElement.src = "assets/RainDay.png";
-      iconElement.alt = "Rain";
-      break;
-    case "moderate rain":
-      iconElement.src = "assets/RainDay.png";
-      iconElement.alt = "Moderate Rain";
-      break;
-    case "light rain":
-      iconElement.src = "assets/RainDay.png";
-      iconElement.alt = "Light Rain";
-      break;
-    case "thunderstorm":
-      iconElement.src = "assets/ThunderstormDay.png";
-      iconElement.alt = "Thunderstorm";
-      break;
-    case "snow":
-      iconElement.src = "assets/SnowDay.png";
-      iconElement.alt = "Snow";
-      break;
-    case "mist":
-      iconElement.src = "assets/MistDay.png";
-      iconElement.alt = "Mist";
-      break;
-    case "windy":
-      iconElement.src = "assets/WindyDay.png";
-      iconElement.alt = "Windy";
-      break;
+  const iconMapping = {
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png":
+      "ClearSkyDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png":
+      "ClearSkyNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png":
+      "FewCloudsDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-night.png":
+      "FewCloudsNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png":
+      "ScatteredCloudsDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-night.png":
+      "ScatteredCloudsNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png":
+      "BrokenCloudsDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png":
+      "BrokenCloudsNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png":
+      "ShowerRainDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png":
+      "ShowerRainNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png":
+      "RainDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-night.png":
+      "RainNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png":
+      "ThunderstormDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-night.png":
+      "ThunderstormNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png":
+      "SnowDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png":
+      "SnowNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png":
+      "MistDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png":
+      "MistNight.png",
+  };
+
+  if (iconUrl in iconMapping) {
+    const filename = iconMapping[iconUrl];
+    iconElement.src = "assets/" + filename;
+    iconElement.alt = filename.replace(".png", "");
+  } else {
+    iconElement.src = iconUrl;
+    iconElement.alt = "Original Icon";
   }
 }
 
@@ -88,7 +81,7 @@ function formatDate(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
   hours = hours % 12 || 12;
-  let amPm = hours >= 12 ? "PM" : "AM";
+  let amPm = hours >= 12 ? "AM" : "PM";
   let days = [
     "Sunday",
     "Monday",
@@ -126,33 +119,98 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  return days[date.getDay()];
+}
+
 function getForecast(city) {
   let apiKey = "3oet065fc2868d480dfba1d0d3a951b0";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
   axios(apiUrl).then(displayForecast);
 }
 
+function updateForecastIcon(iconUrl) {
+  const forecastIconMapping = {
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png":
+      "ClearSkyDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png":
+      "ClearSkyNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png":
+      "FewCloudsDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-night.png":
+      "FewCloudsNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png":
+      "ScatteredCloudsDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-night.png":
+      "ScatteredCloudsNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png":
+      "BrokenCloudsDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png":
+      "BrokenCloudsNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png":
+      "ShowerRainDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png":
+      "ShowerRainNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png":
+      "RainDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-night.png":
+      "RainNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png":
+      "ThunderstormDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-night.png":
+      "ThunderstormNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png":
+      "SnowDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png":
+      "SnowNight.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png":
+      "MistDay.png",
+    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png":
+      "MistNight.png",
+  };
+
+  return forecastIconMapping[iconUrl] || "Original Icon";
+}
+
 function displayForecast(response) {
-  let days = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
   let forecastHtml = "";
+  let forecastSummaryElement = document.querySelector("#forecast-summary");
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      const iconUrl = day.condition.icon_url;
+      const filename = updateForecastIcon(iconUrl);
+
+      forecastHtml =
+        forecastHtml +
+        `
     <div class="weather-forecast-day">
-      <div class="weather-forecast-date">${day}</div>
+      <div class="weather-forecast-date">${formatDay(day.time)}</div>
       <div class="weather-forecast-icon">
-        <img src="assets/PartlySunnyRainy.png" width="50" class="weather-forecast-icon-image" /></div>
+        <img src="assets/${filename}" width="50" class="weather-forecast-icon-image" /></div>
       <div class="weather-forecast-temperature">
-        <span class="weather-forecast-temperature-max">18&deg;</span>
-        <span class="weather-forecast-temperature-min">12&deg;</span>
+        <span class="weather-forecast-temperature-max">${Math.round(
+          day.temperature.maximum
+        )}&deg;</span>
+        <span class="weather-forecast-temperature-min">${Math.round(
+          day.temperature.minimum
+        )}&deg;</span>
       </div>
     </div>`;
+    }
   });
 
-  let forecastSummaryElement = document.querySelector("#forecast-summary");
   forecastSummaryElement.innerHTML = forecastHtml;
 }
 
