@@ -197,37 +197,44 @@ main {
 }
 
 .weather-forecast-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   margin: 0 auto;
   padding-top: 40px;
   padding-bottom: 20px;
 }
 
-.forecast-summary-day {
+.weather-forecast-day {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.weather-forecast-date {
   color: #120c28;
   font-size: 15px;
   font-weight: 400;
   padding-bottom: 15px;
 }
 
-.forecast-summary-image-icon {
+.weather-forecast-icon-image {
   padding: 10px;
 }
 
-.forecast-summary-temperature {
+.weather-forecast-temperature {
   text-align: center;
   padding-top: 10px;
 }
 
-.forecast-temperature-maximum {
+.weather-forecast-temperature-max {
   color: #4d31a0;
   font-size: 15px;
   font-weight: 700;
-
   margin-right: 10px;
 }
 
-.forecast-temperature-minimum {
+.weather-forecast-temperature-min {
   color: #886ed3;
   font-size: 15px;
   font-weight: 700;

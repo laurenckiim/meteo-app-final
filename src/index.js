@@ -123,7 +123,33 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function displayForecast() {
+  let days = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+    <div class="weather-forecast-day">
+      <div class="weather-forecast-date">${day}</div>
+      <div class="weather-forecast-icon">
+        <img src="assets/PartlySunnyRainy.png" width="50" class="weather-forecast-icon-image" /></div>
+      <div class="weather-forecast-temperature">
+        <span class="weather-forecast-temperature-max">18&deg;</span>
+        <span class="weather-forecast-temperature-min">12&deg;</span>
+      </div>
+    </div>`;
+  });
+
+  let forecastSummaryElement = document.querySelector("#forecast-summary");
+  forecastSummaryElement.innerHTML = forecastHtml;
+}
+
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("San Francisco");
+
+displayForecast();
