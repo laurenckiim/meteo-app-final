@@ -74,11 +74,14 @@ function refreshWeather(response) {
     response.data.condition.description
   );
   updateIcon(response);
+
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   temperatureElement.innerHTML = Math.round(temperature);
 
   let roundedWindSpeed = Math.round(response.data.wind.speed);
   windSpeedElement.innerHTML = `${roundedWindSpeed} mph`;
+
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -123,7 +126,13 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-function displayForecast() {
+function getForecast(city) {
+  let apiKey = "3oet065fc2868d480dfba1d0d3a951b0";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
+  axios(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
   let days = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
   let forecastHtml = "";
@@ -151,5 +160,3 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("San Francisco");
-
-displayForecast();
