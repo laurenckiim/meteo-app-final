@@ -4,41 +4,41 @@ function updateIcon(response) {
 
   const iconMapping = {
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png":
-      "ClearSkyDay.png",
+      "Clear-Sky-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png":
-      "ClearSkyNight.png",
+      "Clear-Sky-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png":
-      "FewCloudsDay.png",
+      "Few-Clouds-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-night.png":
-      "FewCloudsNight.png",
+      "Few-Clouds-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png":
-      "ScatteredCloudsDay.png",
+      "Scattered-Clouds-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-night.png":
-      "ScatteredCloudsNight.png",
+      "Scattered-Clouds-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png":
-      "BrokenCloudsDay.png",
+      "Broken-Clouds-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png":
-      "BrokenCloudsNight.png",
+      "Broken-Clouds-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png":
-      "ShowerRainDay.png",
+      "Shower-Rain-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png":
-      "ShowerRainNight.png",
+      "Shower-Rain-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png":
-      "RainDay.png",
+      "Rain-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-night.png":
-      "RainNight.png",
+      "Rain-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png":
-      "ThunderstormDay.png",
+      "Thunderstorm-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-night.png":
-      "ThunderstormNight.png",
+      "Thunderstorm-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png":
-      "SnowDay.png",
+      "Snow-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png":
-      "SnowNight.png",
+      "Snow-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png":
-      "MistDay.png",
+      "Mist-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png":
-      "MistNight.png",
+      "Mist-Night.png",
   };
 
   if (iconUrl in iconMapping) {
@@ -143,41 +143,41 @@ function getForecast(city) {
 function updateForecastIcon(iconUrl) {
   const forecastIconMapping = {
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png":
-      "ClearSkyDay.png",
+      "Clear-Sky-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png":
-      "ClearSkyNight.png",
+      "Clear-Sky-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png":
-      "FewCloudsDay.png",
+      "Few-Clouds-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-night.png":
-      "FewCloudsNight.png",
+      "Few-Clouds-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png":
-      "ScatteredCloudsDay.png",
+      "Scattered-Clouds-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-night.png":
-      "ScatteredCloudsNight.png",
+      "Scattered-Clouds-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png":
-      "BrokenCloudsDay.png",
+      "Broken-Clouds-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png":
-      "BrokenCloudsNight.png",
+      "Broken-Clouds-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png":
-      "ShowerRainDay.png",
+      "Shower-Rain-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png":
-      "ShowerRainNight.png",
+      "Shower-Rain-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png":
-      "RainDay.png",
+      "Rain-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-night.png":
-      "RainNight.png",
+      "Rain-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png":
-      "ThunderstormDay.png",
+      "Thunderstorm-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-night.png":
-      "ThunderstormNight.png",
+      "Thunderstorm-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png":
-      "SnowDay.png",
+      "Snow-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png":
-      "SnowNight.png",
+      "Snow-Night.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png":
-      "MistDay.png",
+      "Mist-Day.png",
     "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png":
-      "MistNight.png",
+      "Mist-Night.png",
   };
 
   return forecastIconMapping[iconUrl] || "Original Icon";
